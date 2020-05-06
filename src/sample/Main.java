@@ -19,9 +19,6 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         stage.setTitle("Hello World");
         //stage.setScene(new Scene(root, 300, 275));
-
-
-
         stage.initStyle(StageStyle.DECORATED);
         stage.setMaximized(false);
         Scene scene = new Scene(root);
