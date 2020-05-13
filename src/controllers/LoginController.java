@@ -110,7 +110,7 @@ public class LoginController implements Initializable {
             status = "Error";
         } else {
             //query
-            String sql = "SELECT * FROM users Where idNumber = ? and PIN = ?";
+            String sql = "SELECT * FROM users where idNumber =? and PIN =?";
             try {
                 preparedStatement = con.prepareStatement(sql);
                 preparedStatement.setString(1, idNumber);
