@@ -82,21 +82,25 @@ public class LoginController implements Initializable {
                     Stage stage = (Stage) node.getScene().getWindow();
                     //stage.setMaximized(true);
                     if (checkStudent.isSelected() && checkLecturer.isSelected()) {
-                        setLblError(Color.TOMATO, "Hey select either a lecturer or student");
+//                        setLblError(Color.TOMATO, "Hey select either a lecturer or student");
+                        infoBox("PLease select one, You cannot select both", null, "Failed");
                         stage.close();
 
                     } else if (checkStudent.isSelected()) {
                         stage.close();
+                        infoBox("Login Successful!", null, "Success");
                         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/course.fxml")));
                         stage.setScene(scene);
                         stage.show();
                     } else if (checkLecturer.isSelected()) {
                         stage.close();
+                        infoBox("Login Successful!", null, "Success");
                         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Home.fxml")));
                         stage.setScene(scene);
                         stage.show();
                     } else {
-                        setLblError(Color.TOMATO, "Hey select either a lecturer or student");
+                        //setLblError(Color.TOMATO, "Hey select either a lecturer or student");
+                        infoBox("Hey select either a lecturer or student", null, "Failed");
                         stage.close();
                     }
 
@@ -157,11 +161,11 @@ public class LoginController implements Initializable {
                     //setLblError(Color.TOMATO, "Enter Correct ID Number/PIN");
                     infoBox("Could not login. Check credentials", null, "Failed");
                     status = "Error";
-                } else {
-                    //setLblError(Color.GREEN, "Login Successful..Redirecting..");
-                    infoBox("Login Successful!", null, "Success");
+                } //else {
+                //setLblError(Color.GREEN, "Login Successful..Redirecting..");
+                //infoBox("Login Successful!", null, "Success");
 
-                }
+                //}
             } catch (SQLException ex) {
                 System.err.println(ex.getMessage());
                 status = "Exception";
