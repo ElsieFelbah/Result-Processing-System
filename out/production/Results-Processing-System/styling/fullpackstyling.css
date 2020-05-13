@@ -23,12 +23,12 @@
 }
 .button2:hover
 {
--fx-background-color : #0C3988 ;
+-fx-background-color : #32CD32 ;
 -fx-text-fill:   #FFF;
 }
 .button2:pressed
 {
--fx-background-color : #0C3400 ;
+-fx-background-color : #32CD32 ;
 -fx-text-fill: #FFF;
 }
 

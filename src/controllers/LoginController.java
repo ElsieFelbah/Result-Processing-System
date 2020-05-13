@@ -11,13 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import utilities.ConnectionUtil;
 
 
@@ -27,6 +25,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -53,14 +52,26 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnSignin;
 
-    /// -- 
+    private String role;
+
+    private static String prof;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    /// --
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
     @FXML
     public void handleButtonAction(MouseEvent event) {
-
+        Window owner = btnSignin.getScene().getWindow();
         if (event.getSource() == btnSignin) {
             //login here
             if (logIn().equals("Success")) {
@@ -70,10 +81,24 @@ public class LoginController implements Initializable {
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     //stage.setMaximized(true);
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Registration.fxml")));
-                    stage.setScene(scene);
-                    stage.show();
+                    if (checkStudent.isSelected() && checkLecturer.isSelected()) {
+                        setLblError(Color.TOMATO, "Hey select either a lecturer or student");
+                        stage.close();
+
+                    } else if (checkStudent.isSelected()) {
+                        stage.close();
+                        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/course.fxml")));
+                        stage.setScene(scene);
+                        stage.show();
+                    } else if (checkLecturer.isSelected()) {
+                        stage.close();
+                        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Home.fxml")));
+                        stage.setScene(scene);
+                        stage.show();
+                    } else {
+                        setLblError(Color.TOMATO, "Hey select either a lecturer or student");
+                        stage.close();
+                    }
 
 
                 } catch (IOException ex) {
@@ -102,25 +127,39 @@ public class LoginController implements Initializable {
 
     //we gonna use string to check for status
     private String logIn() {
+        Window owner = btnSignin.getScene().getWindow();
         String status = "Success";
         String idNumber = txtidNumber.getText();
         String PIN = txtPassword.getText();
         if (idNumber.isEmpty() || PIN.isEmpty()) {
-            setLblError(Color.TOMATO, "Empty credentials");
+            //setLblError(Color.TOMATO, "Empty credentials");
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "There is an empty field(s)");
             status = "Error";
         } else {
             //query
-            String sql = "SELECT * FROM users Where idNumber = ? and PIN = ?";
+            if (checkLecturer.isSelected()) {
+                setRole("lecturer");
+                prof = getRole();
+            }
+            if (checkStudent.isSelected()) {
+                setRole("student");
+                prof = getRole();
+            }
+            System.out.println(prof);
+            String sql = "SELECT * FROM users Where idNumber = ? and PIN = ? and role = '" + prof + "'";
             try {
                 preparedStatement = con.prepareStatement(sql);
                 preparedStatement.setString(1, idNumber);
                 preparedStatement.setString(2, PIN);
                 resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
-                    setLblError(Color.TOMATO, "Enter Correct ID Number/PIN");
+                    //setLblError(Color.TOMATO, "Enter Correct ID Number/PIN");
+                    infoBox("Could not login. Check credentials", null, "Failed");
                     status = "Error";
                 } else {
-                    setLblError(Color.GREEN, "Login Successful..Redirecting..");
+                    //setLblError(Color.GREEN, "Login Successful..Redirecting..");
+                    infoBox("Login Successful!", null, "Success");
 
                 }
             } catch (SQLException ex) {
@@ -137,4 +176,23 @@ public class LoginController implements Initializable {
         lblErrors.setText(text);
         System.out.println(text);
     }
+
+    public static void infoBox(String infoMessage, String headerText, String title) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
+
+    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        alert.show();
+    }
+
+
 }
