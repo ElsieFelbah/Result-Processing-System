@@ -1,25 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
-
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import utilities.ConnectionUtil;
 
-
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,89 +24,55 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-/**
- * FXML Controller class
- *
- * @author oXCToo
- */
-public class RegistrationController implements Initializable {
+public class CourseController implements Initializable {
+    @FXML
+    private TextField txtCourseName;
 
     @FXML
-    private TextField txtFirstname;
-    @FXML
-    private TextField txtLastname;
-    @FXML
-    private TextField txtidNumber;
-//    @FXML
-//    private DatePicker txtDOB;
-    @FXML
-    private TextField txtPIN;
+    private TextField txtCourseCode;
+
     @FXML
     private Button btnSave;
-    @FXML
-    private ComboBox<String> txtGender;
-    @FXML
-    private ComboBox<String> txtRole;
-    @FXML
-    Label lblStatus;
 
     @FXML
     TableView tblData;
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    Label lblStatus;
+
     PreparedStatement preparedStatement;
     Connection connection;
 
-    public RegistrationController() {
+    public CourseController() {
         connection = (Connection) ConnectionUtil.conDB();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        txtGender.getItems().addAll("Male", "Female", "Other");
-        txtGender.getSelectionModel().select("Male");
-        txtRole.getItems().addAll("student", "lecturer");
-        txtRole.getSelectionModel().select("student");
-        fetColumnList();
-        fetRowList();
-
-
-
-    }
-
     @FXML
-    private void HandleEvents(MouseEvent event) {
-        //check if not empty
-        if (txtidNumber.getText().isEmpty() || txtFirstname.getText().isEmpty() || txtLastname.getText().isEmpty() || txtPIN.getText().isEmpty()) {
+    public void HandleEvents(MouseEvent event) {
+        if (txtCourseName.getText().isEmpty() || txtCourseCode.getText().isEmpty()) {
             lblStatus.setTextFill(Color.TOMATO);
             lblStatus.setText("Enter all details");
         } else {
             saveData();
         }
 
+
+
     }
 
-    private void clearFields() {
-        txtFirstname.clear();
-        txtLastname.clear();
-        txtidNumber.clear();
-        txtPIN.clear();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fetColumnList();
+        fetRowList();
     }
-
     private String saveData() {
 
         try {
-            String st = "INSERT INTO users ( firstname, lastname, idNumber, PIN, gender, role) VALUES (?,?,?,?,?,?)";
+            String st = "INSERT INTO courses ( name, code) VALUES (?,?)";
             preparedStatement = (PreparedStatement) connection.prepareStatement(st);
-            preparedStatement.setString(1, txtFirstname.getText());
-            preparedStatement.setString(2, txtLastname.getText());
-            preparedStatement.setString(3,  txtidNumber.getText());
-            preparedStatement.setString(4,  txtPIN.getText());
-            preparedStatement.setString(5, txtGender.getValue().toString());
-            preparedStatement.setString(6, txtRole.getValue());
+            preparedStatement.setString(1, txtCourseName.getText());
+            preparedStatement.setString(2, txtCourseCode.getText());
+
 
             preparedStatement.executeUpdate();
             lblStatus.setTextFill(Color.GREEN);
@@ -127,10 +90,14 @@ public class RegistrationController implements Initializable {
             return "Exception";
         }
     }
+    private void clearFields() {
+        txtCourseName.clear();
+        txtCourseCode.clear();
 
+    }
 
     private ObservableList<ObservableList> data;
-    String SQL = "SELECT firstName, lastName, idNUmber, PIN, gender from users WHERE role = 'student' ";
+    String SQL = "SELECT name, code from courses";
 
     //only fetch columns
     private void fetColumnList() {
@@ -143,8 +110,8 @@ public class RegistrationController implements Initializable {
                 //We are using non property style for making dynamic table
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1).toUpperCase());
-                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
                         return new SimpleStringProperty(param.getValue().get(j).toString());
                     }
                 });

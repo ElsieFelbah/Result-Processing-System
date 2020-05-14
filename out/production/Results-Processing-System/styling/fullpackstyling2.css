@@ -1,37 +1,15 @@
 .button
 {
--fx-background-color : #FFF;
--fx-border-color: #355ECE;
--fx-text-fill:  #0C3988;
+-fx-background-color : #F3F3F3;
 }
 .button:hover
 {
--fx-background-color : #355ECE ;
--fx-text-fill:  #FFF;
+-fx-background-color : #A1C1F4 ;
 }
 .button:pressed
 {
--fx-background-color : #0C39FF ;
--fx-text-fill: #FFF;
+-fx-background-color : #73A3EF ;
 }
-
-.button2
-{
--fx-background-color :  #32CD32;
--fx-border-color: #FFF;
--fx-text-fill:  #FFF;
-}
-.button2:hover
-{
--fx-background-color : #32CD32 ;
--fx-text-fill:   #FFF;
-}
-.button2:pressed
-{
--fx-background-color : #32CD32 ;
--fx-text-fill: #FFF;
-}
-
 
 .table-view .column-header,
 .table-view .column-header-background .filler {

@@ -17,11 +17,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
-        stage.setTitle("Hello World");
+        stage.setTitle("Result Processing System");
         //stage.setScene(new Scene(root, 300, 275));
-
-
-
         stage.initStyle(StageStyle.DECORATED);
         stage.setMaximized(false);
         Scene scene = new Scene(root);
