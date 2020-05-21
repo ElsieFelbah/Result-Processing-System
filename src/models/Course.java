@@ -20,8 +20,12 @@ public class Course {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Course(String name, String courseCode) {
+		this.name = name;
+		this.courseCode = courseCode;
+	}
 
-	
+
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", name=" + name + ", courseCode=" + courseCode + "]";

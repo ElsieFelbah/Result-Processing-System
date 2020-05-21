@@ -6,7 +6,7 @@ import java.util.List;
 public class Student {
 
 
-	private Long id;
+	private Integer id;
 
 
 	private String firstName;
@@ -33,7 +33,7 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(Long id, String firstName, String lastName, String idNumber, String PIN, String gender, List<Course> courses, String role) {
+	public Student(Integer id, String firstName, String lastName, String idNumber, String PIN, String gender, List<Course> courses, String role) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -42,6 +42,15 @@ public class Student {
 		this.gender = gender;
 		this.courses = courses;
 		this.role = role;
+	}
+
+	public Student(Integer id, String firstName, String lastName, String idNumber, String PIN, String gender) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.idNumber = idNumber;
+		this.PIN = PIN;
+		this.gender = gender;
 	}
 
 	@Override
@@ -58,11 +67,17 @@ public class Student {
 				'}';
 	}
 
-	public Long getId() {
+	public Student(String firstName, String lastName, String idNumber) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.idNumber = idNumber;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
