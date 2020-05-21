@@ -56,6 +56,8 @@ public class LoginController implements Initializable {
 
     private static String prof;
 
+    private static String IDNUMBER;
+
     public String getRole() {
         return role;
     }
@@ -64,7 +66,7 @@ public class LoginController implements Initializable {
         this.role = role;
     }
 
-    /// --
+    ///
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -77,19 +79,18 @@ public class LoginController implements Initializable {
             if (logIn().equals("Success")) {
                 try {
 
-                    //add you loading or delays - ;-)
+                    //add you loading or delays
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     //stage.setMaximized(true);
                     if (checkStudent.isSelected() && checkLecturer.isSelected()) {
-//                        setLblError(Color.TOMATO, "Hey select either a lecturer or student");
-                        infoBox("PLease select one, You cannot select both", null, "Failed");
+                        infoBox("Please select one, You cannot select both", null, "Failed");
                         stage.close();
 
                     } else if (checkStudent.isSelected()) {
                         stage.close();
                         infoBox("Login Successful!", null, "Success");
-                        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/course.fxml")));
+                        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/StudentsProfile.fxml")));
                         stage.setScene(scene);
                         stage.show();
                     } else if (checkLecturer.isSelected()) {
@@ -123,6 +124,7 @@ public class LoginController implements Initializable {
             lblErrors.setTextFill(Color.GREEN);
             lblErrors.setText("Server is up : Good to go");
         }
+
     }
 
     public LoginController() {

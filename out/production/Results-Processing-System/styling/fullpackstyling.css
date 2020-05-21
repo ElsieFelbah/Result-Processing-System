@@ -14,10 +14,30 @@
 -fx-background-color : #0C39FF ;
 -fx-text-fill: #FFF;
 }
-
+.buttonlogout{
+-fx-background-color : #32CD32 ;
+-fx-border-color: #32CD32;
+-fx-text-fill: #FFF;
+}
+.buttonlogout:hover{
+-fx-text-fill: #940000;
+}
+.buttonlogout:pressed{
+-fx-text-fill: #FFF;
+}
 .button2
 {
 -fx-background-color :  #32CD32;
+-fx-border-color: #FFF;
+-fx-text-fill:  #FFF;
+}
+.button3{
+-fx-background-color :  #FF0000;
+-fx-border-color: #FFF;
+-fx-text-fill:  #FFF;
+}
+.button3:hover{
+-fx-background-color :  #FF0000;
 -fx-border-color: #FFF;
 -fx-text-fill:  #FFF;
 }

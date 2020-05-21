@@ -32,19 +32,25 @@ public class HomeController implements Initializable {
     private Button btnSettings;
 
     @FXML
-    private Button btnUpdate;
+    private Button btnScores;
 
     @FXML
     private Button btnClasses;
 
 
     public void handleButtonClicks(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnScores){
+            loadStage("/fxml/scores.fxml");
+        }
+        if (mouseEvent.getSource() == btnStudents) {
+            loadStage("/fxml/Registration.fxml");
+        }
+        if (mouseEvent.getSource() == btn_Courses) {
+            loadStage("/fxml/course.fxml");
+        }
+
         if (mouseEvent.getSource() == btnDashboard) {
             loadStage("/fxml/Dashboard.fxml");
-        } else if (mouseEvent.getSource() == btnStudents) {
-            loadStage("/fxml/Registration.fxml");
-        } else if (mouseEvent.getSource() == btn_Courses) {
-            loadStage("/fxml/course.fxml");
         }
 
     }
