@@ -126,6 +126,8 @@ public class RegistrationController implements Initializable {
         txtLastname.clear();
         txtidNumber.clear();
         txtPIN.clear();
+        txtGender.setValue("select a gender");
+        txtRole.setValue("select a role");
 
     }
 
@@ -199,7 +201,7 @@ public class RegistrationController implements Initializable {
             txtLastname.setText(selectedStudent.getLastName());
             txtidNumber.setText(selectedStudent.getIdNumber());
             txtPIN.setText(selectedStudent.getPIN());
-            txtGender.getItems().add(selectedStudent.getGender());
+            txtGender.setValue(selectedStudent.getGender());
 
         }
     }
