@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentsProfileController">
+    <children>
+        <AnchorPane prefHeight="503.0" prefWidth="212.0" style="-fx-background-color: #32CD32;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="86.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icons8_Google_Wallet_50px.png" />
+                    </image>
+                </ImageView>
+            <Button fx:id="btnDashboard" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Results" textFill="WHITE" />
+            <Button fx:id="btnCourses" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Courses" textFill="#940000" />
+            <Button fx:id="btnResults" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Home" textFill="WHITE" />
+            <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Settings" textFill="WHITE" />
+            <Button fx:id="btnLogout" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonlogout" stylesheets="@../styling/fullpackstyling.css" text="Logout" textFill="WHITE" />
+            <Label layoutX="98.0" layoutY="75.0" text="Rps" textFill="#fffbfb" />
+            </children>
+        </AnchorPane>
+      <Pane layoutX="400.0" layoutY="111.0">
+         <children>
+            <TextField fx:id="txtidNumber" layoutX="8.0" layoutY="22.0" prefHeight="34.0" prefWidth="275.0" promptText="ID Number" />
+            <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="107.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtfirstName" layoutX="8.0" layoutY="85.0" prefHeight="34.0" prefWidth="275.0" promptText="First name" />
+            <TextField fx:id="txtlastName" layoutX="8.0" layoutY="145.0" prefHeight="34.0" prefWidth="275.0" promptText="Last name" />
+         </children>
+      </Pane>
+      <Label layoutX="434.0" layoutY="44.0" prefHeight="44.0" prefWidth="275.0" text="COURSE REGISTRATION" textFill="#32CD32">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnRegister" layoutX="409.0" layoutY="395.0" mnemonicParsing="false" onMouseClicked="#handleEvents" prefHeight="34.0" prefWidth="275.0" style="-fx-background-color: #32CD32;" text="Register" textFill="WHITE" />
+      <Label fx:id="lblStatus" layoutX="410.0" layoutY="87.0" prefHeight="34.0" prefWidth="275.0" />
+      <ComboBox fx:id="listOfCourses" editable="true" layoutX="408.0" layoutY="323.0" prefHeight="32.0" prefWidth="278.0" promptText="List of courses" />
+    </children>
+</AnchorPane>
