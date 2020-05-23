@@ -175,6 +175,7 @@ public class CourseController implements Initializable {
             selectedCourse = tblData.getSelectionModel().getSelectedItem();
             txtCourseName.setText(selectedCourse.getName());
             txtCourseCode.setText(selectedCourse.getCourseCode());
+
         }
     }
     private String deleteCourse(){

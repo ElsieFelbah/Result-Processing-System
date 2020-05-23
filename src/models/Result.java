@@ -5,7 +5,7 @@ package models;
 public class Result {
 
 
-	private Long id;
+	private Integer id;
 
 
 	private float attendance;
@@ -33,15 +33,25 @@ public class Result {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Result(Long id, float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore, Student students, Course courses) {
+	public Result(Integer id) {
+		this.id = id;
+	}
+
+	public Result(Integer id, float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore) {
 		this.id = id;
 		this.attendance = attendance;
 		this.assignmentScore = assignmentScore;
 		this.projectScore = projectScore;
 		this.midsemScore = midsemScore;
 		this.examScore = examScore;
-		this.students = students;
-		this.courses = courses;
+	}
+
+	public Result(float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore) {
+		this.attendance = attendance;
+		this.assignmentScore = assignmentScore;
+		this.projectScore = projectScore;
+		this.midsemScore = midsemScore;
+		this.examScore = examScore;
 	}
 
 	@Override
@@ -51,11 +61,11 @@ public class Result {
 				+ ", students=" + students + ", courses=" + courses + "]";
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

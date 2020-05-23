@@ -2,24 +2,29 @@ package controllers;
 
 //import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import models.Result;
 import models.Student;
 import utilities.ConnectionUtil;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +60,8 @@ public class StudentsProfileController implements Initializable {
     @FXML
     private TextField txtlastName;
 
+    ObservableList<Student> students = FXCollections.observableArrayList();
+
     public StudentsProfileController() {
         connection = (Connection) ConnectionUtil.conDB();
     }
@@ -70,18 +77,40 @@ public class StudentsProfileController implements Initializable {
     private List<String> options = new ArrayList<>();
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listOfCourses.setItems(FXCollections.observableArrayList(getData()));
+        txtidNumber.getText();
+        String sql = "SELECT * FROM users Where idNumber = '" + txtidNumber.getText() + "'";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                students.add(new Student(resultSet.getString("firstName"), resultSet.getString("lastName")));
+                txtfirstName.setText(String.valueOf(new PropertyValueFactory<Student,String>("firstName")));
+                txtlastName.setText(String.valueOf(new PropertyValueFactory<Student,String>("lastName")));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        }
+
     }
 
     public void handleEvents(MouseEvent event) {
-        if(txtlastName.getText().isEmpty() || txtfirstName.getText().isEmpty() || txtidNumber.getText().isEmpty()){
+        if (txtlastName.getText().isEmpty() || txtfirstName.getText().isEmpty() || txtidNumber.getText().isEmpty()) {
             lblStatus.setTextFill(Color.TOMATO);
             lblStatus.setText("Enter all details");
         } else {
-            saveData();
+            isPresent();
         }
+
+    }
+    public void transferMessage(String idNumber) {
+        //Display the message
+        txtidNumber.setText(idNumber);
 
     }
 
@@ -122,7 +151,7 @@ public class StudentsProfileController implements Initializable {
 
     private String saveData() {
         try {
-            String st = "INSERT INTO course_registration ( firstName, lastName, idNumber, courseName) VALUES (?,?,?,?)";
+            String st = "INSERT INTO course_registration (firstName, lastName, idNumber, courseName) VALUES (?,?,?,?)";
             preparedStatement = (PreparedStatement) connection.prepareStatement(st);
             preparedStatement.setString(1, txtfirstName.getText());
             preparedStatement.setString(2, txtlastName.getText());
@@ -131,9 +160,14 @@ public class StudentsProfileController implements Initializable {
             preparedStatement.executeUpdate();
             lblStatus.setTextFill(Color.GREEN);
             lblStatus.setText("Registered Successfully");
+            txtidNumber.clear();
+            txtfirstName.clear();
+            txtlastName.clear();
+            listOfCourses.setValue("choose a course");
 
         } catch (Exception e) {
             e.printStackTrace();
+
         }
         return "Success";
     }
@@ -152,6 +186,32 @@ public class StudentsProfileController implements Initializable {
             e.printStackTrace();
         }
         return options;
+    }
+
+    public void isPresent() {
+        try {
+            System.out.println(txtidNumber.getText());
+            String SQL = "SELECT courseName FROM course_registration WHERE idNumber='" + txtidNumber.getText() + "'";
+            ResultSet rs = connection.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                options.add(rs.getString("courseName"));
+            }
+            rs.close();
+            if (options.contains(listOfCourses.getValue())) {
+                lblStatus.setTextFill(Color.TOMATO);
+                lblStatus.setText("Already registered for this course");
+                txtidNumber.clear();
+                txtfirstName.clear();
+                txtlastName.clear();
+                listOfCourses.setValue("choose a course");
+            } else {
+                saveData();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

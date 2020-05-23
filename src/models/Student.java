@@ -53,6 +53,11 @@ public class Student {
 		this.gender = gender;
 	}
 
+	public Student(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	@Override
 	public String toString() {
 		return "Student{" +
