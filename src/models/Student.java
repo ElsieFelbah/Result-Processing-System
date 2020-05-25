@@ -24,6 +24,25 @@ public class Student {
 
 	private String role;
 
+	private float attendance;
+
+
+	private float assignmentScore;
+
+
+	private float projectScore;
+
+
+	private float midsemScore;
+
+
+	private float examScore;
+
+
+	private Student students;
+
+	private String grade;
+
 
 	private List<Course> courses;
 
@@ -32,6 +51,29 @@ public class Student {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public Student(Integer id, String firstName, String lastName, String idNumber, float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore, String grade) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.idNumber = idNumber;
+		this.attendance = attendance;
+		this.assignmentScore = assignmentScore;
+		this.projectScore = projectScore;
+		this.midsemScore = midsemScore;
+		this.examScore = examScore;
+		this.grade = grade;
+	}
+
+	public Student(float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore, String grade) {
+		this.attendance = attendance;
+		this.assignmentScore = assignmentScore;
+		this.projectScore = projectScore;
+		this.midsemScore = midsemScore;
+		this.examScore = examScore;
+		this.grade = grade;
+	}
+
 
 	public Student(Integer id, String firstName, String lastName, String idNumber, String PIN, String gender, List<Course> courses, String role) {
 		this.id = id;
@@ -53,10 +95,10 @@ public class Student {
 		this.gender = gender;
 	}
 
-	public Student(String firstName, String lastName) {
+	public Student(String firstName) {
 		this.firstName = firstName;
-		this.lastName = lastName;
 	}
+
 
 	@Override
 	public String toString() {
@@ -141,4 +183,51 @@ public class Student {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public float getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(float attendance) {
+		this.attendance = attendance;
+	}
+
+	public float getAssignmentScore() {
+		return assignmentScore;
+	}
+
+	public void setAssignmentScore(float assignmentScore) {
+		this.assignmentScore = assignmentScore;
+	}
+
+	public float getProjectScore() {
+		return projectScore;
+	}
+
+	public void setProjectScore(float projectScore) {
+		this.projectScore = projectScore;
+	}
+
+	public float getMidsemScore() {
+		return midsemScore;
+	}
+
+	public void setMidsemScore(float midsemScore) {
+		this.midsemScore = midsemScore;
+	}
+
+	public float getExamScore() {
+		return examScore;
+	}
+
+	public void setExamScore(float examScore) {
+		this.examScore = examScore;
+	}
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
 }

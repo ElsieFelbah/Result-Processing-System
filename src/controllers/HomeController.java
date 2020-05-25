@@ -52,6 +52,10 @@ public class HomeController implements Initializable {
         if (mouseEvent.getSource() == btnDashboard) {
             loadStage("/fxml/Dashboard.fxml");
         }
+        if (mouseEvent.getSource() == btnClasses) {
+            loadStage("/fxml/ResultEntry.fxml");
+        }
+
 
     }
     private void loadStage(String fxml) {

@@ -64,7 +64,7 @@
                         <FontAwesomeIconView fill="#32CD32" glyphName="EXCHANGE" size="50" />
                     </graphic>
                 </Button>
-                <Button fx:id="btnClasses" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" stylesheets="@../styling/fullpackstyling2.css" text="Results" GridPane.rowIndex="1">
+                <Button fx:id="btnClasses" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="181.0" prefWidth="242.0" stylesheets="@../styling/fullpackstyling2.css" text="Results" GridPane.rowIndex="1">
                     <graphic>
                         <FontAwesomeIconView fill="#32CD32" glyphName="INDENT" size="50" />
                     </graphic>
