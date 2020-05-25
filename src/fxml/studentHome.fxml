@@ -19,25 +19,10 @@
                     </image>
                 </ImageView>
                 <Button fx:id="btnHome" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Home" textFill="#94320a"/>
-                <graphic>
-                    <FontAwesomeIconView fill="#sss" glyphName="DASHBOARD" size="26" />
-                </graphic>
                 <Button fx:id="btnResults" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Results" textFill="WHITE" />
-                <graphic>
-                    <FontAwesomeIconView fill="#32CD32" glyphName="GROUP" size="26" />
-                </graphic>
                 <Button fx:id="btnCourses" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Courses" textFill="WHITE" />
-                <graphic>
-                    <FontAwesomeIconView fill="#32CD32" glyphName="CALENDAR_CHECK_ALT" size="26" />
-                </graphic>
                 <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Settings" textFill="WHITE" />
-                <graphic>
-                    <FontAwesomeIconView fill="#32CD32" glyphName="SLIDERS" size="26" />
-                </graphic>
                 <Button fx:id="btnLogout" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonlogout" stylesheets="@../styling/fullpackstyling.css" text="Logout" textFill="WHITE" />
-                <graphic>
-                    <FontAwesomeIconView fill="#32CD32" glyphName="EXCHANGE" size="26" />
-                </graphic>
                 <Label layoutX="98.0" layoutY="75.0" text="Rps" textFill="#fffbfb" />
             </children>
         </AnchorPane>

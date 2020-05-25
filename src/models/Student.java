@@ -132,6 +132,11 @@ public class Student {
 		return firstName;
 	}
 
+	public Student(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
