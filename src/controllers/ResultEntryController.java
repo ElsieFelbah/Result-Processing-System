@@ -121,7 +121,6 @@ public class ResultEntryController implements Initializable {
     }
 
     private void generateStudentsAndResults() {
-        System.out.println(courseName.getValue());
         tblStudents.getItems().clear();
         try {
             String SQL = "SELECT * from course_registration WHERE courseName = '" + courseName.getValue() + "' ";
@@ -167,20 +166,7 @@ public class ResultEntryController implements Initializable {
         updateResults();
     }
 
-    private void getsScores() {
-        try {
-            String SQL = "SELECT * from scores";
-            ResultSet rs = connection.createStatement().executeQuery(SQL);
-            while (rs.next()) {
-                scores.add(new Result(rs.getInt("id"), rs.getFloat("assignment"), rs.getFloat("attendance"), rs.getFloat("project"), rs.getFloat("midsem"), rs.getFloat("exam")));
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+    
 
     private Character calculateGrade(float ass, float att, float proj, float mid, float ex) {
         float assignment = Float.parseFloat(txtAssignment.getText());

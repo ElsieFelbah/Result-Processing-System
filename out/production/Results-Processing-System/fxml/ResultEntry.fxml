@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ResultEntryController">
+    <children>
+        <Pane layoutY="-2.0" prefHeight="139.0" prefWidth="944.0" style="-fx-background-color: #32CD32;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+            <children>
+                <Label layoutX="73.0" layoutY="30.0" text="Results" textFill="WHITE">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Label>
+                <Label layoutX="79.0" layoutY="91.0" text="Result Processing System" textFill="WHITE">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <TableView fx:id="tblStudents" layoutX="28.0" layoutY="225.0" onMouseClicked="#onEdit" prefHeight="383.0" prefWidth="504.0">
+            <columns>
+                <TableColumn fx:id="idNumber" prefWidth="87.79998970031738" text="ID Number" />
+                <TableColumn fx:id="lastName" prefWidth="88.5999984741211" text="Last Name" />
+            <TableColumn fx:id="assignment" prefWidth="54.600006103515625" text="Assignment" />
+            <TableColumn fx:id="attendance" prefWidth="55.79998779296875" text="Attendance" />
+            <TableColumn fx:id="project" prefWidth="55.4000244140625" text="Project" />
+            <TableColumn fx:id="midsem" prefWidth="54.399993896484375" text="Midsem" />
+            <TableColumn fx:id="exam" prefWidth="53.20001220703125" text="Exam" />
+            <TableColumn fx:id="grade" prefWidth="51.199981689453125" text="Grade" />
+            </columns>
+        </TableView>
+        <ComboBox fx:id="courseName" editable="true" layoutX="28.0" layoutY="182.0" prefHeight="32.0" prefWidth="267.0" promptText="Select course" />
+      <AnchorPane layoutX="561.0" layoutY="225.0" prefHeight="383.0" prefWidth="380.0">
+         <children>
+            <TextField fx:id="txtAssignment" layoutX="22.0" layoutY="41.0" promptText="assignment" />
+            <TextField fx:id="txtAttendance" layoutX="210.0" layoutY="41.0" promptText="attendance" />
+            <TextField fx:id="txtProject" layoutX="22.0" layoutY="119.0" promptText="project" />
+            <TextField fx:id="txtMidsem" layoutX="210.0" layoutY="119.0" promptText="midsem" />
+            <TextField fx:id="txtExam" layoutX="22.0" layoutY="192.0" promptText="exam" />
+              <Button fx:id="btnsaveScores" layoutX="22.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#handleUpdateAction" prefHeight="34.0" prefWidth="145.0" style="-fx-background-color: #32CD32;" text="Save" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnviewStudents" layoutX="316.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="145.0" style="-fx-background-color: #32CD32;" text="View Students" textFill="WHITE" />
+      <Label fx:id="lblStatus" layoutX="562.0" layoutY="164.0" prefHeight="42.0" prefWidth="306.0" />
+    </children>
+</AnchorPane>
