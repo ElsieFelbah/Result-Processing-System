@@ -71,34 +71,42 @@ public class studentHomeController implements Initializable {
     PreparedStatement preparedStatement;
     Connection connection;
     private List<String> options = new ArrayList<>();
-
+    private List<String> firstnames = new ArrayList<>();
+    private List<String> lastnames = new ArrayList<>();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblID.getText();
-        String sql = "SELECT * FROM users Where idNumber = '" + lblID.getText() + "'";
+
+
+    }
+
+    public void transferMessage(String idNumber) {
+
+        lblID.setText(idNumber);
         try {
-            preparedStatement = connection.prepareStatement(sql);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                students.add(new Student(resultSet.getString("firstName"), resultSet.getString("lastName")));
-                lblFName.setText(String.valueOf(new PropertyValueFactory<Student,String>("firstName")));
-                lblLName.setText(String.valueOf(new PropertyValueFactory<Student,String>("lastName")));
+            String sql = "SELECT firstName, lastName FROM users WHERE idNumber = '" + lblID.getText() + "'";
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()) {
+                firstnames.add(resultSet.getString("firstName"));
+                lastnames.add(resultSet.getString("lastName"));
             }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+            resultSet.close();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (String first : firstnames
+        ) {
+            lblFName.setText(first);
+        }
+        for (String last : lastnames
+        ) {
+            lblLName.setText(last);
         }
 
-
     }
-    public void transferMessage(String idNumber) {
-        //Display the message
-        lblID.setText(idNumber);
 
-    }
 
     public void handleButtonAction(MouseEvent event) {
         try {
