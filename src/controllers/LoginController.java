@@ -204,6 +204,7 @@ public class LoginController implements Initializable {
                     infoBox("Could not login. Check credentials", null, "Failed");
                     status = "Error";
 
+
                 }
 
 

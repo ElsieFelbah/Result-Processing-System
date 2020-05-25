@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentsProfileController">
     <children>
         <AnchorPane prefHeight="503.0" prefWidth="212.0" style="-fx-background-color: #32CD32;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -19,7 +20,7 @@
                         <Image url="@../images/icons8_Google_Wallet_50px.png" />
                     </image>
                 </ImageView>
-            <Button fx:id="btnDashboard" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Results" textFill="WHITE" />
+            <Button fx:id="btnDashboard" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Results" textFill="WHITE"/>
             <Button fx:id="btnCourses" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Courses" textFill="#940000" />
             <Button fx:id="btnResults" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Home" textFill="WHITE" />
             <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Settings" textFill="WHITE" />

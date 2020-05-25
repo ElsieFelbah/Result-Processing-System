@@ -25,6 +25,8 @@ public class Result {
 
 	private Student students;
 
+	private char grade;
+
 
 	private Course courses;
 
@@ -46,12 +48,13 @@ public class Result {
 		this.examScore = examScore;
 	}
 
-	public Result(float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore) {
+	public Result(float attendance, float assignmentScore, float projectScore, float midsemScore, float examScore, char grade) {
 		this.attendance = attendance;
 		this.assignmentScore = assignmentScore;
 		this.projectScore = projectScore;
 		this.midsemScore = midsemScore;
 		this.examScore = examScore;
+		this.grade = grade;
 	}
 
 	@Override
@@ -125,6 +128,11 @@ public class Result {
 		this.courses = courses;
 	}
 
+	public char getGrade() {
+		return grade;
+	}
 
-
+	public void setGrade(char grade) {
+		this.grade = grade;
+	}
 }

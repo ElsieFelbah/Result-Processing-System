@@ -75,29 +75,16 @@ public class StudentsProfileController implements Initializable {
     PreparedStatement preparedStatement;
     Connection connection;
     private List<String> options = new ArrayList<>();
-
-
+    private List<String> options2 = new ArrayList<>();
+    private List<String> firstnames = new ArrayList<>();
+    private List<String> lastnames = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listOfCourses.setItems(FXCollections.observableArrayList(getData()));
-        txtidNumber.getText();
-        String sql = "SELECT * FROM users Where idNumber = '" + txtidNumber.getText() + "'";
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                students.add(new Student(resultSet.getString("firstName"), resultSet.getString("lastName")));
-                txtfirstName.setText(String.valueOf(new PropertyValueFactory<Student,String>("firstName")));
-                txtlastName.setText(String.valueOf(new PropertyValueFactory<Student,String>("lastName")));
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-
-        }
 
     }
+
 
     public void handleEvents(MouseEvent event) {
         if (txtlastName.getText().isEmpty() || txtfirstName.getText().isEmpty() || txtidNumber.getText().isEmpty()) {
@@ -108,9 +95,30 @@ public class StudentsProfileController implements Initializable {
         }
 
     }
+
     public void transferMessage(String idNumber) {
-        //Display the message
+
         txtidNumber.setText(idNumber);
+        try {
+            String sql = "SELECT firstName, lastName FROM users WHERE idNumber = '" + txtidNumber.getText() + "'";
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()) {
+                firstnames.add(resultSet.getString("firstName"));
+                lastnames.add(resultSet.getString("lastName"));
+            }
+            resultSet.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (String first : firstnames
+        ) {
+            txtfirstName.setText(first);
+        }
+        for (String last : lastnames
+        ) {
+            txtlastName.setText(last);
+        }
 
     }
 
@@ -160,9 +168,6 @@ public class StudentsProfileController implements Initializable {
             preparedStatement.executeUpdate();
             lblStatus.setTextFill(Color.GREEN);
             lblStatus.setText("Registered Successfully");
-            txtidNumber.clear();
-            txtfirstName.clear();
-            txtlastName.clear();
             listOfCourses.setValue("choose a course");
 
         } catch (Exception e) {
@@ -190,19 +195,16 @@ public class StudentsProfileController implements Initializable {
 
     public void isPresent() {
         try {
-            System.out.println(txtidNumber.getText());
-            String SQL = "SELECT courseName FROM course_registration WHERE idNumber='" + txtidNumber.getText() + "'";
+
+            String SQL = "SELECT courseName, idNumber FROM course_registration WHERE idNumber='" + txtidNumber.getText() + "'";
             ResultSet rs = connection.createStatement().executeQuery(SQL);
             while (rs.next()) {
-                options.add(rs.getString("courseName"));
+                options2.add(rs.getString("courseName"));
             }
             rs.close();
-            if (options.contains(listOfCourses.getValue())) {
+            if (options2.contains(listOfCourses.getValue())) {
                 lblStatus.setTextFill(Color.TOMATO);
                 lblStatus.setText("Already registered for this course");
-                txtidNumber.clear();
-                txtfirstName.clear();
-                txtlastName.clear();
                 listOfCourses.setValue("choose a course");
             } else {
                 saveData();
@@ -213,8 +215,6 @@ public class StudentsProfileController implements Initializable {
 
 
     }
-
-
 
 
 }
