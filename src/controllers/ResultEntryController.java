@@ -166,7 +166,7 @@ public class ResultEntryController implements Initializable {
         updateResults();
     }
 
-    
+
 
     private Character calculateGrade(float ass, float att, float proj, float mid, float ex) {
         float assignment = Float.parseFloat(txtAssignment.getText());
