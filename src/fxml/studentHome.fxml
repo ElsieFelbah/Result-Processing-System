@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.studentHomeController">
+    <children>
+        <AnchorPane prefHeight="503.0" prefWidth="212.0" style="-fx-background-color: #32CD32;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="86.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icons8_Google_Wallet_50px.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnHome" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Home" textFill="#94320a"/>
+                <graphic>
+                    <FontAwesomeIconView fill="#sss" glyphName="DASHBOARD" size="26" />
+                </graphic>
+                <Button fx:id="btnResults" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Results" textFill="WHITE" />
+                <graphic>
+                    <FontAwesomeIconView fill="#32CD32" glyphName="GROUP" size="26" />
+                </graphic>
+                <Button fx:id="btnCourses" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Courses" textFill="WHITE" />
+                <graphic>
+                    <FontAwesomeIconView fill="#32CD32" glyphName="CALENDAR_CHECK_ALT" size="26" />
+                </graphic>
+                <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Settings" textFill="WHITE" />
+                <graphic>
+                    <FontAwesomeIconView fill="#32CD32" glyphName="SLIDERS" size="26" />
+                </graphic>
+                <Button fx:id="btnLogout" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonlogout" stylesheets="@../styling/fullpackstyling.css" text="Logout" textFill="WHITE" />
+                <graphic>
+                    <FontAwesomeIconView fill="#32CD32" glyphName="EXCHANGE" size="26" />
+                </graphic>
+                <Label layoutX="98.0" layoutY="75.0" text="Rps" textFill="#fffbfb" />
+            </children>
+        </AnchorPane>
+        <Pane layoutX="324.0" layoutY="111.0" prefHeight="325.0" prefWidth="432.0">
+            <children>
+                <Label fx:id="lblFName" alignment="CENTER" layoutX="67.0" layoutY="130.0" prefHeight="52.0" prefWidth="168.0" text="Fname" textFill="LIMEGREEN">
+                    <font>
+                        <Font name="Bodoni MT Bold Italic" size="25.0" />
+                    </font>
+                </Label>
+              <Label fx:id="lblMessage" layoutX="58.0" layoutY="28.0" prefHeight="87.0" prefWidth="339.0" text="Welcome!" textFill="#32CD32">
+                  <font>
+                      <Font name="Bodoni MT Bold Italic" size="71.0" />
+                  </font>
+              </Label>
+            <Label fx:id="lblID" alignment="CENTER" layoutX="67.0" layoutY="188.0" prefHeight="52.0" prefWidth="309.0" text="id" textFill="LIMEGREEN">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLName" alignment="CENTER" layoutX="208.0" layoutY="130.0" prefHeight="52.0" prefWidth="168.0" text="Lname" textFill="LIMEGREEN">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

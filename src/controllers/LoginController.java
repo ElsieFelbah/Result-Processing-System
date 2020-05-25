@@ -146,13 +146,13 @@ public class LoginController implements Initializable {
     private void loadSceneAndSendMessage() {
         try {
             //Load second scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StudentsProfile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/studentHome.fxml"));
             Parent root = loader.load();
 
             //Get controller of scene2
-            StudentsProfileController studentsProfileController = loader.getController();
+            studentHomeController StudentHomeController = loader.getController();
             //Pass whatever data you want. You can have multiple method calls here
-            studentsProfileController.transferMessage(txtidNumber.getText());
+            StudentHomeController.transferMessage(txtidNumber.getText());
 
 
             //Show scene 2 in new window
