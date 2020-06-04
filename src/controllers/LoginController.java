@@ -103,10 +103,8 @@ public class LoginController implements Initializable {
                     } else if (checkStudent.isSelected()) {
                         stage.close();
                         infoBox("Login Successful!", null, "Success");
-//                        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/StudentsProfile.fxml")));
-//                        stage.setScene(scene);
-//                        stage.show();
                         loadSceneAndSendMessage();
+
                     } else if (checkLecturer.isSelected()) {
                         stage.close();
                         infoBox("Login Successful!", null, "Success");
@@ -150,9 +148,11 @@ public class LoginController implements Initializable {
             Parent root = loader.load();
 
             //Get controller of scene2
-            studentHomeController StudentHomeController = loader.getController();
+            //StudentsProfileController studentsProfileController = loader.getController();
+            studentHomeController studentHomeController = loader.getController();
             //Pass whatever data you want. You can have multiple method calls here
-            StudentHomeController.transferMessage(txtidNumber.getText());
+            //studentsProfileController.transferMessage(txtidNumber.getText());
+            studentHomeController.transferMessage(txtidNumber.getText());
 
 
             //Show scene 2 in new window

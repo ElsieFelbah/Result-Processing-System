@@ -17,6 +17,8 @@ public class Student {
 
 	private String idNumber;
 
+	private String courseName;
+
 
 	private String PIN;
 
@@ -62,6 +64,11 @@ public class Student {
 		this.projectScore = projectScore;
 		this.midsemScore = midsemScore;
 		this.examScore = examScore;
+		this.grade = grade;
+	}
+
+	public Student(String courseName, String grade) {
+		this.courseName = courseName;
 		this.grade = grade;
 	}
 
@@ -235,4 +242,11 @@ public class Student {
 		this.grade = grade;
 	}
 
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 }

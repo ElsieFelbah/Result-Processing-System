@@ -20,11 +20,31 @@
                         <Image url="@../images/icons8_Google_Wallet_50px.png" />
                     </image>
                 </ImageView>
-            <Button fx:id="btnDashboard" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Results" textFill="WHITE"/>
-            <Button fx:id="btnCourses" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Courses" textFill="#940000" />
-            <Button fx:id="btnResults" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Home" textFill="WHITE" />
-            <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" text="Settings" textFill="WHITE" />
-            <Button fx:id="btnLogout" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonlogout" stylesheets="@../styling/fullpackstyling.css" text="Logout" textFill="WHITE" />
+                <Button fx:id="btnResults" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonResults" stylesheets="@../styling/fullpackstyling.css" text="Results" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIconView fill="#FFF" glyphName="TASKS" size="20" />
+                    </graphic>
+                </Button>
+                <Button fx:id="btnCourses" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonCourses" stylesheets="@../styling/fullpackstyling.css" text="Courses" textFill="#940000">
+                    <graphic>
+                        <FontAwesomeIconView fill="#940000" glyphName="CALENDAR_CHECK_ALT" size="20" />
+                    </graphic>
+                </Button>
+                <Button fx:id="btnHome" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonHome" stylesheets="@../styling/fullpackstyling.css" text="Home" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIconView fill="#FFF" glyphName="HOME" size="20" />
+                    </graphic>
+                </Button>
+                <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonSettings" stylesheets="@../styling/fullpackstyling.css" text="Settings" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIconView fill="#FFF" glyphName="SLIDERS" size="20" />
+                    </graphic>
+                </Button>
+                <Button fx:id="btnLogout" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonlogout" stylesheets="@../styling/fullpackstyling.css" text="Logout" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIconView fill="#FFF" glyphName="EXCHANGE" size="20" />
+                    </graphic>
+                </Button>
             <Label layoutX="98.0" layoutY="75.0" text="Rps" textFill="#fffbfb" />
             </children>
         </AnchorPane>

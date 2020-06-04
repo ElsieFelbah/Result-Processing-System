@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -60,6 +62,9 @@ public class studentHomeController implements Initializable {
     @FXML
     private Label lblID;
 
+    @FXML
+    private AnchorPane loadAnchor;
+
 
     ObservableList<Student> students = FXCollections.observableArrayList();
 
@@ -106,6 +111,39 @@ public class studentHomeController implements Initializable {
         }
 
     }
+    private void loadSceneAndSendMessageToCourse() {
+        try {
+            //Load second scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StudentsProfile.fxml"));
+            Parent root = loader.load();
+            //Get controller of scene2
+            StudentsProfileController studentsProfileController = loader.getController();
+            studentsProfileController.transferMessage(lblID.getText());
+            //Show scene 2 in new window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
+    private void loadSceneAndSendMessageToResult() {
+        try {
+            //Load second scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StudentResults.fxml"));
+            Parent root = loader.load();
+            //Get controller of scene2
+            StudentResultsController studentResultsController = loader.getController();
+            studentResultsController.transferMessage(lblID.getText());
+            //Show scene 2 in new window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
+
 
 
     public void handleButtonAction(MouseEvent event) {
@@ -129,10 +167,14 @@ public class studentHomeController implements Initializable {
                     alert.close();
                 }
 
-
             }
             if (event.getSource() == btnCourses) {
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/StudentsProfile.fxml")));
+                stage.close();
+                loadSceneAndSendMessageToCourse();
+            }
+            if(event.getSource() == btnResults){
+                stage.close();
+                loadSceneAndSendMessageToResult();
             }
 
 
@@ -141,6 +183,12 @@ public class studentHomeController implements Initializable {
         }
 
 
+    }
+    public void transferMessage(String idNumber, String firstname, String lastname) {
+
+        lblID.setText(idNumber);
+        lblFName.setText(firstname);
+        lblLName.setText(lastname);
     }
 
 }

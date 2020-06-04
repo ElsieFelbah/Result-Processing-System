@@ -25,6 +25,50 @@
 .buttonlogout:pressed{
 -fx-text-fill: #FFF;
 }
+.buttonCourses{
+-fx-background-color : #32CD32 ;
+-fx-border-color: #32CD32;
+-fx-text-fill: #FFF;
+}
+.buttonCourses:hover{
+-fx-text-fill: #940000;
+}
+.buttonCourses:pressed{
+-fx-text-fill: #FFF;
+}
+.buttonSettings{
+-fx-background-color : #32CD32 ;
+-fx-border-color: #32CD32;
+-fx-text-fill: #FFF;
+}
+.buttonSettings:hover{
+-fx-text-fill: #940000;
+}
+.buttonSettings:pressed{
+-fx-text-fill: #FFF;
+}
+.buttonResults{
+-fx-background-color : #32CD32 ;
+-fx-border-color: #32CD32;
+-fx-text-fill: #FFF;
+}
+.buttonResults:hover{
+-fx-text-fill: #940000;
+}
+.buttonResults:pressed{
+-fx-text-fill: #FFF;
+}
+.buttonHome{
+-fx-background-color : #32CD32 ;
+-fx-border-color: #32CD32;
+-fx-text-fill: #FFF;
+}
+.buttonHome:hover{
+-fx-text-fill: #940000;
+}
+.buttonHome:pressed{
+-fx-text-fill: #FFF;
+}
 .button2
 {
 -fx-background-color :  #32CD32;
