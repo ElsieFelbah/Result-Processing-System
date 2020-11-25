@@ -4,9 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.studentHomeController">
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Blah">
     <children>
         <AnchorPane prefHeight="503.0" prefWidth="212.0" style="-fx-background-color: #32CD32;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -21,36 +20,14 @@
                 <Button fx:id="btnSettings" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonSettings" stylesheets="@../styling/fullpackstyling.css" text="Settings" textFill="WHITE" />
                 <Button fx:id="btnLogout" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #32CD32;" styleClass="buttonlogout" stylesheets="@../styling/fullpackstyling.css" text="Logout" textFill="WHITE" />
                 <Label layoutX="98.0" layoutY="75.0" text="Rps" textFill="#fffbfb" />
-                  <FontAwesomeIconView fill="#94320a" glyphName="HOME" layoutX="66.0" layoutY="145.0" size="20" />
-                  <FontAwesomeIconView fill="#FFF" glyphName="CALENDAR_CHECK_ALT" layoutX="66.0" layoutY="217.0" size="20" />
-                  <FontAwesomeIconView fill="#FFF" glyphName="TASKS" layoutX="66.0" layoutY="296.0" size="20" />
-                  <FontAwesomeIconView fill="#FFF" glyphName="SLIDERS" layoutX="67.0" layoutY="369.0" size="20" />
-                  <FontAwesomeIconView fill="#FFF" glyphName="EXCHANGE" layoutX="66.0" layoutY="447.0" size="20" text="" />
+                <FontAwesomeIconView fill="#94320a" glyphName="HOME" layoutX="66.0" layoutY="145.0" size="20" />
+                <FontAwesomeIconView fill="#FFF" glyphName="CALENDAR_CHECK_ALT" layoutX="66.0" layoutY="217.0" size="20" />
+                <FontAwesomeIconView fill="#FFF" glyphName="TASKS" layoutX="66.0" layoutY="296.0" size="20" />
+                <FontAwesomeIconView fill="#FFF" glyphName="SLIDERS" layoutX="67.0" layoutY="369.0" size="20" />
+                <FontAwesomeIconView fill="#FFF" glyphName="EXCHANGE" layoutX="66.0" layoutY="447.0" size="20" text="" />
             </children>
         </AnchorPane>
-      <AnchorPane fx:id="loadAnchor" layoutX="223.0" prefHeight="503.0" prefWidth="631.0">
-         <children>
-              <Label fx:id="lblMessage" layoutX="125.0" layoutY="111.0" prefHeight="87.0" prefWidth="339.0" text="Welcome!" textFill="#32CD32">
-                  <font>
-                      <Font name="Bodoni MT Bold Italic" size="71.0" />
-                  </font>
-              </Label>
-            <Label fx:id="lblID" alignment="CENTER" layoutX="140.0" layoutY="286.0" prefHeight="52.0" prefWidth="309.0" text="id" textFill="LIMEGREEN">
-               <font>
-                  <Font name="Bodoni MT Bold Italic" size="25.0" />
-               </font>
-            </Label>
-                <Label fx:id="lblFName" alignment="CENTER" layoutX="159.0" layoutY="245.0" prefHeight="52.0" prefWidth="168.0" text="Fname" textFill="LIMEGREEN">
-                    <font>
-                        <Font name="Bodoni MT Bold Italic" size="25.0" />
-                    </font>
-                </Label>
-            <Label fx:id="lblLName" alignment="CENTER" layoutX="265.0" layoutY="245.0" prefHeight="52.0" prefWidth="168.0" text="Lname" textFill="LIMEGREEN">
-               <font>
-                  <Font name="Bodoni MT Bold Italic" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+        <Pane layoutX="324.0" layoutY="111.0" prefHeight="325.0" prefWidth="432.0" />
+      <AnchorPane fx:id="loadAnchor" layoutX="224.0" prefHeight="503.0" prefWidth="630.0" />
     </children>
 </AnchorPane>
